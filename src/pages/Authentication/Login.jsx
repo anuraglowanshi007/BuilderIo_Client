@@ -13,12 +13,19 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    // try {
+    //   const res = await axios.post(
+    //     "https://buildio-server.onrender.com/api/auth/login",
+    //     { emailOrUsername, password },
+    //     { withCredentials: true } // important for cookies
+    //   );
+
     try {
-      const res = await axios.post(
-        "https://buildio-server.onrender.com/api/auth/login",
-        { emailOrUsername, password },
-        { withCredentials: true } // important for cookies
-      );
+  const res = await axios.post(
+    `${import.meta.env.VITE_API_URL}/auth/login`,
+    { emailOrUsername, password },
+    { withCredentials: true }
+  );
 
       // Store token or navigate
       localStorage.setItem("accessToken", res.data.data.accessToken);

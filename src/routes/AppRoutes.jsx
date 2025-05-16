@@ -5,10 +5,11 @@ import Builder from '../pages/Dashboard/Builder'
 import Theme from '../pages/Dashboard/Theme'
 import Overview from '../pages/Dashboard/Overview'
 import Navbar from '../components/Navbar'
-import Signup2 from '../pages/Authentication/Signup2'
+import SignUp from '../pages/Authentication/Signup'
 import Login from '../pages/Authentication/Login'
 // import Profile from '../pages/Profile/Profile'
 import Profile from '../pages/Authentication/EditProfile'
+import Logout from '../pages/Authentication/Logout'
 
 const AppRoutes = () => {
   return (
@@ -23,9 +24,11 @@ const AppRoutes = () => {
 
     // Authentication routes
     {/* <Route path='/signup' element={<Signup/>}/> */}
-    <Route path='/signup2' element={<Signup2/>}/>
+    <Route path='/signup' element={<SignUp/>}/>
     <Route path='/login' element={<Login/>}/>
     <Route path='profile' element={<Profile/>} />
+    <Route path='/logout' element={<Logout/>} />
+    
 
     </Routes>
   )
