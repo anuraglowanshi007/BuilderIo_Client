@@ -23,8 +23,12 @@
     "autoprefixer": "^10.4.21",
     "axios": "^1.9.0",
     "class-variance-authority": "^0.7.1",
+<<<<<<< HEAD
     "express": "^5.1.0",
     "lightningcss": "^1.30.1",
+=======
+    "dotenv": "^16.5.0",
+>>>>>>> 2070838c91857b8d1111fe4850583abb95654f44
     "lucide-react": "^0.510.0",
     "next-themes": "^0.4.6",
     "postcss": "^8.5.3",

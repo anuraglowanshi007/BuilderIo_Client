@@ -14,10 +14,29 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     setLoading(true);
     setError(null);
     try {
       const res = await api.post("/api/auth/login", { emailOrUsername, password });
+=======
+
+    // try {
+    //   const res = await axios.post(
+    //     "https://buildio-server.onrender.com/api/auth/login",
+    //     { emailOrUsername, password },
+    //     { withCredentials: true } // important for cookies
+    //   );
+
+    try {
+  const res = await axios.post(
+    `${import.meta.env.VITE_API_URL}/auth/login`,
+    { emailOrUsername, password },
+    { withCredentials: true }
+  );
+
+      // Store token or navigate
+>>>>>>> 2070838c91857b8d1111fe4850583abb95654f44
       localStorage.setItem("accessToken", res.data.data.accessToken);
       alert("Login successful");
       navigate("/dashboard/sites"); // Dashboard ke sites route par redirect
