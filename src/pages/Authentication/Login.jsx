@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../../api/api"; // api.js import karein
 import glogo from "../../images/googleicon.png";
 import flogo from "../../images/facebook icon.png";
 import gmlogo from "../../images/emailicon.png";
@@ -8,30 +8,29 @@ import gmlogo from "../../images/emailicon.png";
 export default function Login() {
   const [emailOrUsername, setEmailOrUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
+    setError(null);
     try {
-      const res = await axios.post(
-        "https://buildio-server.onrender.com/api/auth/login",
-        { emailOrUsername, password },
-        { withCredentials: true } // important for cookies
-      );
-
-      // Store token or navigate
+      const res = await api.post("/api/auth/login", { emailOrUsername, password });
       localStorage.setItem("accessToken", res.data.data.accessToken);
       alert("Login successful");
-      navigate("/dashboard"); // update with actual route
+      navigate("/dashboard/sites"); // Dashboard ke sites route par redirect
     } catch (err) {
       console.error("Login failed", err.response?.data?.message || err.message);
-      alert(err.response?.data?.message || "Login failed");
+      setError(err.response?.data?.message || "Login failed");
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:8000/api/auth/google";
+    window.location.href = "https://buildio-server.onrender.com/api/auth/google";
   };
 
   return (
@@ -42,7 +41,7 @@ export default function Login() {
             Buildio
           </h1>
         </Link>
-        <Link to="/" className="mr-9  hover:text-[#587EDE] hover:underline">
+        <Link to="/signup2" className="mr-9 hover:text-[#587EDE] hover:underline">
           Create an account
         </Link>
       </div>
@@ -68,6 +67,7 @@ export default function Login() {
                     value={emailOrUsername}
                     onChange={(e) => setEmailOrUsername(e.target.value)}
                     className="border p-2 w-full outline-none border-gray-400 rounded-lg"
+                    disabled={loading}
                   />
                 </div>
                 <div className="my-3">
@@ -78,6 +78,7 @@ export default function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="border p-2 w-full outline-none border-gray-400 rounded-lg"
+                    disabled={loading}
                   />
                   <Link to="/forgot">
                     <h4 className="text-sm font-medium text-[#587EDE]">Forgot Password?</h4>
@@ -85,10 +86,12 @@ export default function Login() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full mt-2 bg-[#587EDE] text-white text-center py-2 rounded-full cursor-pointer"
+                  className="w-full mt-2 bg-[#587EDE] text-white text-center py-2 rounded-full cursor-pointer disabled:bg-[#a0b8ff]"
+                  disabled={loading}
                 >
-                  Login
+                  {loading ? "Logging in..." : "Login"}
                 </button>
+                {error && <p className="text-red-600 mt-2 text-sm">{error}</p>}
               </form>
             </div>
           </div>
@@ -108,6 +111,7 @@ export default function Login() {
               </div>
               <div className="border rounded-full py-2 flex items-center justify-center gap-3 hover:bg-gray-100 cursor-pointer">
                 <img src={flogo} alt="Facebook Icon" className="w-6" />
+               Destino
                 <h4 className="text-sm sm:text-base">Continue with Facebook</h4>
               </div>
               <div className="border rounded-full py-2 flex items-center justify-center gap-3 hover:bg-gray-100 cursor-pointer">

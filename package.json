@@ -10,12 +10,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@fontsource/roboto": "^5.2.5",
     "@hello-pangea/dnd": "^18.0.1",
+    "@mui/icons-material": "^7.1.0",
+    "@mui/material": "^7.1.0",
     "@radix-ui/react-slot": "^1.2.2",
-    "@tailwindcss/vite": "^4.1.6",
+    "@tailwindcss/node": "^4.1.7",
+    "@tailwindcss/vite": "^4.1.7",
+    "aos": "^2.3.4",
     "autoprefixer": "^10.4.21",
     "axios": "^1.9.0",
     "class-variance-authority": "^0.7.1",
+    "express": "^5.1.0",
+    "lightningcss": "^1.30.1",
     "lucide-react": "^0.510.0",
     "next-themes": "^0.4.6",
     "postcss": "^8.5.3",
@@ -39,5 +48,18 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
     "vite": "^6.3.5"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anuraglowanshi007/BuilderIo_Client.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anuraglowanshi007/BuilderIo_Client/issues"
+  },
+  "homepage": "https://github.com/anuraglowanshi007/BuilderIo_Client#readme"
 }

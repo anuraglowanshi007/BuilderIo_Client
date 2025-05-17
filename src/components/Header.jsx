@@ -32,16 +32,13 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
             </svg>
           </button>
 
-          {/* Logo or app name - visible on all screens */}
-          <Link to="/" className="text-lg font-semibold text-gray-800 hidden sm:block">
-            Your App
-          </Link>
+         
         </div>
 
         {/* Right side - User controls */}
         <div className="flex items-center space-x-4">
           {/* Search bar - hidden on mobile */}
-          <div className="hidden md:block relative">
+          {/* <div className="hidden md:block relative">
             <input
               type="text"
               placeholder="Search..."
@@ -52,7 +49,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </div>
-          </div>
+          </div> */}
 
           {/* Notifications - hidden on mobile */}
           <button className="hidden md:block p-1 text-gray-500 hover:text-gray-600 relative">
